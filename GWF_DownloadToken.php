@@ -7,9 +7,20 @@
  */
 final class GWF_DownloadToken extends GDO implements GWF_Orderable
 {
-	public function canPayWith(GWF_PaymentModule $module) { return true; }
-	public function getPrice() { return $this->getDowload()->getPrice(); }
-	
+	#############
+	### Order ###
+	#############
+	public function getOrderCancelURL(GWF_User $user) { return url('Download', 'List'); }
+	public function getOrderSuccessURL(GWF_User $user) { return url('Download', 'View', 'id='.$this->getDownloadID()); }
+	public function getOrderTitle(string $iso) { return tiso($iso, 'card_title_downloadtoken', [htmle($this->getDowload()->getTitle())]); }
+	public function getOrderPrice() { return $this->getDowload()->getPrice(); }
+	public function canPayOrderWith(GWF_PaymentModule $module) { return true; }
+	public function onOrderPaid()
+	{
+		$this->insert();
+		return new GWF_Message('msg_download_purchased');
+	}
+
 	###########
 	### GDO ###
 	###########
@@ -47,6 +58,14 @@ final class GWF_DownloadToken extends GDO implements GWF_Orderable
 	public static function hasToken(GWF_User $user, GWF_Download $dl)
 	{
 		return self::table()->select('1')->where("dlt_user={$user->getID()} AND dlt_download={$dl->getID()}")->first()->exec()->fetchValue() === '1';
+	}
+
+	##############
+	### Render ###
+	##############
+	public function renderCard()
+	{
+		return GWF_Template::modulePHP('Download', 'card/download_token.php', ['gdo' => $this]);
 	}
 	
 }

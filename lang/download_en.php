@@ -1,6 +1,10 @@
 <?php
 return array(
 ###########################################################################
+'ft_download_order' => '[%s] Purchase File',
+'card_title_downloadtoken' => 'Purchase File &quot;%s&quot;',
+'card_title_downloadprice' => 'Price: %s',
+###########################################################################
 'mail_subj_download_pending' => '[%s] New Download',
 'mail_body_download_pending' => '
 Dear %s,
