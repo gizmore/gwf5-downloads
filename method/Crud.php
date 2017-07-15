@@ -50,7 +50,7 @@ final class Download_Crud extends GWF_MethodCrud
 			$this->gdo->saveVars(array(
 				'dl_accepted' => GWF_Time::getDate(),
 				'dl_acceptor' => GWF_User::SYSTEM_ID,
-			));
+			), false);
 		}
 		else
 		{
