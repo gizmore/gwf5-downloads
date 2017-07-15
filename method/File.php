@@ -13,7 +13,7 @@ final class Download_File extends GWF_Method
 		
 		$download->increase('dl_downloads');
 		
-		GWF_Hook::call('DownloadFile', [$user, $download]);
+		GWF_Hook::call('DownloadFile', $user, $download);
 		
 		return method('GWF', 'GetFile')->executeWithId($download->getFileID());
 	}
