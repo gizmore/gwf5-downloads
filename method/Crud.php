@@ -12,6 +12,13 @@ final class Download_Crud extends GWF_MethodCrud
 	public function gdoTable() { return GWF_Download::table(); }
 	public function hrefList() { return href('Download', 'List'); }
 	
+	public function execute()
+	{
+		$response = parent::execute();
+		$tabs = Module_Download::instance()->renderTabs();
+		return $tabs->add($response);
+	}
+	
 	public function createForm(GWF_Form $form)
 	{
 		$user = GWF_User::current();

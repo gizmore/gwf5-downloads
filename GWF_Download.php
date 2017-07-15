@@ -57,15 +57,15 @@ final class GWF_Download extends GDO
 	public function canView(GWF_User $user) { return ($this->isAccepted() && (!$this->isDeleted())) || $user->isStaff(); }
 	public function canDownload(GWF_User $user)
 	{
-// 		if ($user->isStaff())
-// 		{
-// 			return true;
-// 		}
 		if ($this->isPaid())
 		{
 			if (!GWF_DownloadToken::hasToken($user, $this))
 			{
 				return false;
+			}
+			else
+			{
+				return true;
 			}
 		}
 		if ($user->getLevel() < $this->getLevel())

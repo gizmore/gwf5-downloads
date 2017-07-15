@@ -19,7 +19,10 @@ $user = GWF_User::current();
     <div><?php l('downloads'); ?>: <?php echo $gdo->getDownloads(); ?></div>
     <div><?php l('votes'); ?>: <?php echo $gdo->gdoColumn('dl_votes')->gdo($gdo)->renderCell(); ?></div>
     <div><?php l('rating'); ?>: <?php echo $gdo->gdoColumn('dl_rating')->gdo($gdo)->renderCell(); ?></div>
+    <?php if ($gdo->isPaid()) : ?>
     <div><?php l('price'); ?>: <?php echo $gdo->displayPrice(); ?></div>
+    <?php endif; ?>
+    <hr>
     <?php echo $gdo->displayInfo(); ?>
   </md-card-content>
   <gwf-div></gwf-div>

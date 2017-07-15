@@ -1,5 +1,12 @@
 <?php
 return array(
+'gwf_download' => 'Download',
+'downloads' => 'Downloads',
+###########################################################################
+'link_downloads' => 'Downloads (%s)',
+'link_upload' => 'Upload',
+###########################################################################
+'list_download_list' => '[%s] Downloads',
 ###########################################################################
 'ft_download_order' => '[%s] Purchase File',
 'card_title_downloadtoken' => 'Purchase File &quot;%s&quot;',
