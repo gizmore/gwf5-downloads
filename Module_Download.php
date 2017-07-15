@@ -16,7 +16,8 @@ final class Module_Download extends GWF_Module
 	##############
 	public $module_priority = 70;
 	public function onLoadLanguage() { return $this->loadLanguage('lang/download'); }
-	public function getClasses() { return array('GWF_Download', 'GWF_DownloadVote', 'GWF_DownloadToken'); }
+	public function getClasses() { return ['GWF_Download', 'GWF_DownloadVote', 'GWF_DownloadToken']; }
+	public function href_administrate_module() { return href('Download', 'Admin'); }
 
 	##############
 	### Config ###

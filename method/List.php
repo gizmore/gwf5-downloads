@@ -4,10 +4,8 @@
  * @author gizmore
  *
  */
-final class Download_List extends GWF_MethodQueryTable
+final class Download_List extends GWF_MethodQueryCards
 {
-	use GWF_MethodAdmin;
-	
 	public function isGuestAllowed()
 	{
 		return Module_Download::instance()->cfgGuestDownload();
@@ -16,9 +14,13 @@ final class Download_List extends GWF_MethodQueryTable
 	public function execute()
 	{
 		$response = parent::execute();
-		$tabs = $this->renderNavBar('Download');
-		$tabs->add(Module_Download::instance()->renderTabs());
+		$tabs = Module_Download::instance()->renderTabs();
 		return $tabs->add($response);
+	}
+	
+	public function gdoTable()
+	{
+		return GWF_Download::table();
 	}
 	
 	public function getQuery()

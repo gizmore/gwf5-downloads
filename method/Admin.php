@@ -2,6 +2,7 @@
 final class Download_Admin extends GWF_MethodQueryTable
 {
 	use GWF_MethodAdmin;
+
 	public function getPermission() { return 'staff'; }
 	
 	public function execute()
