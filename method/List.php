@@ -23,7 +23,7 @@ final class Download_List extends GWF_MethodQueryCards
 		return GWF_Download::table();
 	}
 	
-	public function getQuery()
+	public function gdoQuery()
 	{
 		return GWF_Download::table()->select('*, gwf_file.*')->joinObject('dl_file')->where("dl_deleted IS NULL AND dl_accepted IS NOT NULL");
 	}

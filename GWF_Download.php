@@ -133,6 +133,16 @@ final class GWF_Download extends GDO
 	##############
 	public static function countDownloads()
 	{
-		return self::table()->countWhere("dl_deleted IS NULL AND dl_accepted IS NOT NULL");
+		if (!($cached = GDOCache::get('gwf_download_count')))
+		{
+			$cached = self::table()->countWhere("dl_deleted IS NULL AND dl_accepted IS NOT NULL");
+			GDOCache::set('gwf_download_count', $cached);
+		}
+		return $cached;
+	}
+	
+	public function gdoAfterCreate()
+	{
+		GDOCache::unset('gwf_download_count');
 	}
 }
