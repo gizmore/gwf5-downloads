@@ -19,6 +19,11 @@ final class Download_Crud extends GWF_MethodCrud
 		return $tabs->add($response);
 	}
 	
+	protected function crudCreateTitle()
+	{
+	    $this->title('ft_download_upload', [$this->getSiteName()]);
+	}
+	
 	public function createForm(GWF_Form $form)
 	{
 		$user = GWF_User::current();
