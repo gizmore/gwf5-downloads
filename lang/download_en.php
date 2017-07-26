@@ -3,7 +3,7 @@ return array(
 'gwf_download' => 'Download',
 'downloads' => 'Downloads',
 ###########################################################################
-'link_downloads' => 'Downloads (%s)',
+'link_downloads' => '%s Downloads',
 'link_upload' => 'Upload',
 'ft_download_upload' => '[%s] Upload',
 ###########################################################################
